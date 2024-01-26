@@ -4,6 +4,26 @@ import './fridge.dart';
 final TextEditingController titleController = TextEditingController();
 final TextEditingController contentController = TextEditingController();
 
+class NoteModel {
+  final String? title;
+  final String? content;
+  final DateTime? date;
+
+  const NoteModel({
+    this.date,
+    this.title,
+    this.content,
+  });
+
+  toJson() {
+    return {
+      "date": date,
+      "title": title,
+      "content": content,
+    };
+  }
+}
+
 void createNote(BuildContext context) {
   showModalBottomSheet(
       context: context,
@@ -48,12 +68,18 @@ void createNote(BuildContext context) {
               children: <Widget>[
                 ElevatedButton(
                     onPressed: () {
-                      final time = DateTime.now().microsecond.toString();
-                      firebaseRef.child(time).set({
-                        'title': titleController.text.toString(),
-                        'content': contentController.text.toString(),
-                        'time': time,
-                      });
+                      final now = DateTime.now();
+                      final note = NoteModel(
+                        date: now,
+                        title: titleController.text.toString(),
+                        content: contentController.text.toString(),
+                      );
+                      firebaseRef.add(note.toJson());
+                      // firebaseRef.child(time).({
+                      //   'title': titleController.text.toString(),
+                      //   'content': contentController.text.toString(),
+                      //   'time': time,
+                      // });
                       titleController.clear();
                       contentController.clear();
                     },

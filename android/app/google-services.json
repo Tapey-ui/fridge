@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "639193032500",
+    "firebase_url": "https://fridge-bf293-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "fridge-bf293",
+    "storage_bucket": "fridge-bf293.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:639193032500:android:8f01d92a624a27747ce761",
+        "android_client_info": {
+          "package_name": "com.example.testrun"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJH4IKbD9-HdjsppAuLqjnBikp39jX7WQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

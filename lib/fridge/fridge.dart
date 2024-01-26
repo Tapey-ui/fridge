@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:testrun/fridge/createNote.dart';
-import 'package:firebase_storage/firebase_storage.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-// final firebaseRef = FirebaseSt.instance.ref();
+final firebaseRef = FirebaseFirestore.instance.collection('notes');
 
 class Fridge extends StatelessWidget {
   const Fridge({super.key});
@@ -10,7 +10,7 @@ class Fridge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(218, 210, 209, 209),
+      backgroundColor: const Color.fromARGB(218, 210, 209, 209),
       body: SafeArea(
         child: Center(
           child: Column(
