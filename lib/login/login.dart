@@ -7,6 +7,8 @@ import 'package:testrun/login/components/textfield.dart';
 class Login extends StatelessWidget {
   Login({super.key});
 
+  final Fridge f = Fridge();
+
   final username = TextEditingController();
   final password = TextEditingController();
 
@@ -41,7 +43,7 @@ class Login extends StatelessWidget {
                 // sign in button
                 loginButton(onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const Fridge()));
+                      MaterialPageRoute(builder: (context) => Fridge()));
                 }),
               ],
             ),

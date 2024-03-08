@@ -15,6 +15,21 @@ class NoteModel {
     this.content,
   });
 
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'date': date,
+      'title': title,
+      'content': content,
+    };
+  }
+
+  factory NoteModel.fromMap(Map<String, dynamic> map) {
+    return NoteModel(
+      title: map['title'] as String,
+      content: map['content'] as String,
+    );
+  }
+
   toJson() {
     return {
       "date": date,
@@ -82,9 +97,12 @@ void createNote(BuildContext context) {
                       // });
                       titleController.clear();
                       contentController.clear();
+                      Navigator.of(context).pop();
                     },
                     child: const Text("Add Note")),
-                ElevatedButton(onPressed: () {}, child: const Text("Cancel")),
+                ElevatedButton(
+                    onPressed: () => Navigator.of(context).pop(),
+                    child: const Text("Cancel")),
               ],
             ),
             const SizedBox(height: 20),
