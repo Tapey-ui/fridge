@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import './fridge.dart';
 
@@ -7,7 +8,7 @@ final TextEditingController contentController = TextEditingController();
 class NoteModel {
   final String? title;
   final String? content;
-  final DateTime? date;
+  final Timestamp? date;
 
   const NoteModel({
     this.date,
@@ -27,6 +28,7 @@ class NoteModel {
     return NoteModel(
       title: map['title'] as String,
       content: map['content'] as String,
+      date: map['date'] as Timestamp,
     );
   }
 
@@ -85,7 +87,7 @@ void createNote(BuildContext context) {
                     onPressed: () {
                       final now = DateTime.now();
                       final note = NoteModel(
-                        date: now,
+                        date: Timestamp.fromDate(now),
                         title: titleController.text.toString(),
                         content: contentController.text.toString(),
                       );
