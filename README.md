@@ -1,6 +1,6 @@
-# testrun
+# Noteapp_flutter
 
-A new Flutter project.
+A note app which focuses on the CRUD operations in Flutter/Dart.
 
 ## Getting Started
 
