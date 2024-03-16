@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:testrun/fridge/createNote.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:testrun/fridge/note.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:reorderable_grid_view/reorderable_grid_view.dart';
 
 final firebaseRef = FirebaseFirestore.instance.collection('notes');
 
@@ -34,8 +36,11 @@ class Fridge extends StatelessWidget {
                         child: CircularProgressIndicator(),
                       );
                     }
-                    return ListView.builder(
+                    return MasonryGridView.count(
                       shrinkWrap: true,
+                      crossAxisCount: 3,
+                      mainAxisSpacing: 3,
+                      crossAxisSpacing: 3,
                       itemCount: snapshot.data!.docs.length,
                       itemBuilder: (context, index) {
                         final noteMap = snapshot.data!.docs[index];
@@ -47,6 +52,9 @@ class Fridge extends StatelessWidget {
                       },
                     );
                   }),
+              const SizedBox(
+                height: 15,
+              ),
               ElevatedButton.icon(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.indigo,
